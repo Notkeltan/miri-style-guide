@@ -157,7 +157,7 @@
     .color-hero-swatch {
       height: 220px; display: flex; flex-direction: column;
       justify-content: flex-end; padding: 24px;
-      transition: transform 0.3s ease; cursor: default;
+      transition: transform 0.3s ease; cursor: pointer;
     }
     .color-hero-swatch:hover { transform: translateY(-4px); z-index: 2; }
     .color-hero-swatch .color-role { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; margin-bottom: 6px; }
@@ -166,7 +166,7 @@
 
     .colors-extended-title { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 24px; margin-top: 8px; }
     .colors-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; }
-    .color-chip { position: relative; cursor: default; }
+    .color-chip { position: relative; cursor: pointer; }
     .color-chip-swatch {
       height: 80px; border-radius: 10px; margin-bottom: 10px;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -549,10 +549,10 @@
     <div class="color-usage">
       <p class="usage-title">Colours in use</p>
       <div class="usage-grid">
-        <div class="usage-card"><img src="images/Example Uses/CC3366.png" alt="#CC3366 accent pink on headings" /><div class="usage-card-label">#CC3366 — Accent pink on headings &amp; interactive elements</div></div>
-        <div class="usage-card"><img src="images/Example Uses/183655.png" alt="#183655 navy on page backgrounds" /><div class="usage-card-label">#183655 — Deep navy on page backgrounds</div></div>
-        <div class="usage-card"><img src="images/Example Uses/e2ad75.png" alt="#e2ad75 gold on highlight strips" /><div class="usage-card-label">#e2ad75 — Gold on highlight strips &amp; borders</div></div>
-        <div class="usage-card"><img src="images/Example Uses/dbe2e9.png" alt="#dbe2e9 light blue-grey on section backgrounds" /><div class="usage-card-label">#dbe2e9 — Light blue-grey on section backgrounds</div></div>
+        <div class="usage-card"><img src="images/example-uses/cc3366.png" alt="#CC3366 accent pink on headings" /><div class="usage-card-label">#CC3366 — Accent pink on headings &amp; interactive elements</div></div>
+        <div class="usage-card"><img src="images/example-uses/183655.png" alt="#183655 navy on page backgrounds" /><div class="usage-card-label">#183655 — Deep navy on page backgrounds</div></div>
+        <div class="usage-card"><img src="images/example-uses/e2ad75.png" alt="#e2ad75 gold on highlight strips" /><div class="usage-card-label">#e2ad75 — Gold on highlight strips &amp; borders</div></div>
+        <div class="usage-card"><img src="images/example-uses/dbe2e9.png" alt="#dbe2e9 light blue-grey on section backgrounds" /><div class="usage-card-label">#dbe2e9 — Light blue-grey on section backgrounds</div></div>
       </div>
     </div>
 
@@ -601,7 +601,7 @@
         <div class="type-detail" style="margin-bottom: 24px;">
           <strong style="color:rgba(255,255,255,0.5);">Use for:</strong> H1–H4, CTA text, pull quotes, button labels
         </div>
-        <div class="type-font-image"><img src="images/IvyJournal Font Example.jpg" alt="IvyJournal typeface specimen" /></div>
+        <div class="type-font-image"><img src="images/ivyjournal-example.jpg" alt="IvyJournal typeface specimen" /></div>
       </div>
 
       <!-- Inter Tight -->
@@ -1002,6 +1002,52 @@
 <footer style="background:#0C1F33; border-top:1px solid rgba(255,255,255,0.06); padding:48px 60px 32px; text-align:center;">
   <p style="font-family:'Inter Tight',sans-serif; font-size:12px; color:rgba(255,255,255,0.3); letter-spacing:0.12em; text-transform:uppercase;">MIRI Brand Style Guide — Machine Intelligence Research Institute</p>
 </footer>
+
+
+<!-- ─── COPY TO CLIPBOARD ──────────────────────────────────────────── -->
+<div id="copy-toast" style="
+  position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(20px);
+  background:#e2ad75; color:#0C1F33; font-family:'Inter Tight',sans-serif;
+  font-size:13px; font-weight:600; letter-spacing:0.08em;
+  padding:10px 22px; border-radius:100px;
+  opacity:0; pointer-events:none;
+  transition:opacity 0.2s ease, transform 0.2s ease;
+  z-index:9999;
+"></div>
+
+<script>
+function showToast(hex) {
+  const t = document.getElementById('copy-toast');
+  t.textContent = hex + ' copied';
+  t.style.opacity = '1';
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => {
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(-50%) translateY(20px)';
+  }, 1800);
+}
+
+function copyHex(hex) {
+  navigator.clipboard.writeText(hex).then(() => showToast(hex));
+}
+
+// Hero swatches — read from .color-hex child
+document.querySelectorAll('.color-hero-swatch').forEach(el => {
+  el.addEventListener('click', () => {
+    const hexEl = el.querySelector('.color-hex');
+    if (hexEl) copyHex(hexEl.textContent.trim());
+  });
+});
+
+// Chip swatches — read data-hex attribute
+document.querySelectorAll('.color-chip').forEach(el => {
+  el.addEventListener('click', () => {
+    const swatch = el.querySelector('[data-hex]');
+    if (swatch) copyHex(swatch.getAttribute('data-hex'));
+  });
+});
+</script>
 
 </body>
 </html>
