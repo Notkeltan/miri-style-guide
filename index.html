@@ -534,7 +534,19 @@
       </div>
     </div>
 
-    <p class="colors-extended-title">Extended Palette</p>
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; margin-top:8px;">
+      <p class="colors-extended-title" style="margin:0;">Extended Palette</p>
+      <button id="copy-palette-btn" onclick="copyPaletteAsPng()" style="
+        display:inline-flex; align-items:center; gap:8px;
+        background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+        border-radius:100px; padding:8px 18px; cursor:pointer;
+        font-family:'Inter Tight',sans-serif; font-size:12px; font-weight:500;
+        color:rgba(255,255,255,0.7); letter-spacing:0.04em;
+        transition:background 0.2s, color 0.2s;">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="3" width="9" height="10" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M4 3V2.5A1.5 1.5 0 0 1 5.5 1h7A1.5 1.5 0 0 1 14 2.5v7A1.5 1.5 0 0 1 12.5 11H12" stroke="currentColor" stroke-width="1.3"/></svg>
+        Copy palette as PNG
+      </button>
+    </div>
     <div class="colors-grid">
       <div class="color-chip"><div class="color-chip-swatch" style="background:#183655; border:1px solid rgba(255,255,255,0.08);" data-hex="#183655"></div><div class="color-chip-label">#183655</div></div>
       <div class="color-chip"><div class="color-chip-swatch" style="background:#1a3e64; border:1px solid rgba(255,255,255,0.08);" data-hex="#1a3e64"></div><div class="color-chip-label">#1a3e64</div></div>
@@ -985,29 +997,7 @@
           <div style="min-width:220px;">
             <div style="font-family:'Inter Tight',sans-serif; font-size:13px; color:rgba(255,255,255,0.7); margin-bottom:12px;">Subscribe to our Newsletter</div>
             <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:10px 14px; font-size:12px; color:rgba(255,255,255,0.35); margin-bottom:8px; font-family:'Inter Tight',sans-serif;">Email Address</div>
-            <div style="background:#1a3e64; border-radius:6px; padding:10px 14px; font-size:12px; color:white; text-align:center; font-family:'Inter Tight',sans-serif; font-weight:500;">Subscribe</div>
-          </div>
-        </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:24px;">
-          <div>
-            <div style="font-family:'Inter Tight',sans-serif; font-size:13px; font-weight:600; color:rgba(255,255,255,0.7);">Machine Intelligence Research Institute</div>
-            <div style="font-family:'Inter Tight',sans-serif; font-size:12px; color:rgba(255,255,255,0.4); margin-top:2px;">Berkeley, California</div>
-          </div>
-          <div style="display:flex; gap:16px; font-size:18px; color:rgba(255,255,255,0.5);">
-            <span>f</span><span>𝕏</span>
-          </div>
-        </div>
-      </div>
-      <p style="font-size:12px; color:rgba(255,255,255,0.3); margin-top:16px; line-height:1.6;">Footer: dark navy (#0C1F33). Three columns — MIRI bottom-text logo lockup (bird + "MIRI" wordmark), 2×3 link grid, newsletter subscribe form. Subscribe button in #1a3e64. Bottom bar: full org name + location left, Facebook + X icons right. Thin white/08 rule between.</p>
-    </div>
-
-    <div class="component-card" style="margin-top:8px;">
-      <div class="component-label">Site Navigation Structure</div>
-      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:16px;">
-        <div style="background:var(--accent-pink); border-radius:8px; padding:12px; text-align:center; font-size:12px; font-weight:500;">The Problem</div>
-        <div style="background:rgba(255,255,255,0.08); border-radius:8px; padding:12px; text-align:center; font-size:12px; color:rgba(255,255,255,0.6);">Research</div>
-        <div style="background:rgba(255,255,255,0.08); border-radius:8px; padding:12px; text-align:center; font-size:12px; color:rgba(255,255,255,0.6);">About Us</div>
-        <div style="background:rgba(255,255,255,0.08); border-radius:8px; padding:12px; text-align:center; font-size:12px; color:rgba(255,255,255,0.6);">Updates</div>
+            <div style="
         <div style="background:#1a3e64; border-radius:8px; padding:12px; text-align:center; font-size:12px; font-weight:500; border:1px solid rgba(255,255,255,0.15);">Donate</div>
       </div>
       <p style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.6;">
@@ -1020,4 +1010,133 @@
 
 <!-- ─── FOOTER ────────────────────────────────────────────────────────── -->
 <footer style="background:#0C1F33; border-top:1px solid rgba(255,255,255,0.06); padding:48px 60px 32px; text-align:center;">
-  <p style="font-family:'Inter Tight',sans-serif; font-size:12px; color:rgba(255,255,255,0.3); letter-spacing:0.12em; text-transform:uppercase;">MIRI Brand Style Guide — Machine Int
+  <p style="font-family:'Inter Tight',sans-serif; font-size:12px; color:rgba(255,255,255,0.3); letter-spacing:0.12em; text-transform:uppercase;">MIRI Brand Style Guide — Machine Intelligence Research Institute</p>
+</footer>
+
+<!-- ─── COPY TO CLIPBOARD ──────────────────────────────────────────── -->
+<div id="copy-toast" style="
+  position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(20px);
+  background:#e2ad75; color:#0C1F33; font-family:'Inter Tight',sans-serif;
+  font-size:13px; font-weight:600; letter-spacing:0.08em;
+  padding:10px 22px; border-radius:100px;
+  opacity:0; pointer-events:none;
+  transition:opacity 0.2s ease, transform 0.2s ease;
+  z-index:9999;
+"></div>
+
+<script>
+function showToast(msg) {
+  const t = document.getElementById('copy-toast');
+  t.textContent = msg;
+  t.style.opacity = '1';
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => {
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(-50%) translateY(20px)';
+  }, 1800);
+}
+
+function copyHex(hex) {
+  navigator.clipboard.writeText(hex).then(() => showToast(hex + ' copied'));
+}
+
+// Hero swatches
+document.querySelectorAll('.color-hero-swatch').forEach(el => {
+  el.addEventListener('click', () => {
+    const hexEl = el.querySelector('.color-hex');
+    if (hexEl) copyHex(hexEl.textContent.trim());
+  });
+});
+
+// Chip swatches
+document.querySelectorAll('.color-chip').forEach(el => {
+  el.addEventListener('click', () => {
+    const swatch = el.querySelector('[data-hex]');
+    if (swatch) copyHex(swatch.getAttribute('data-hex'));
+  });
+});
+
+// ── COPY PALETTE AS PNG ────────────────────────────────────────────
+async function copyPaletteAsPng() {
+  const btn = document.getElementById('copy-palette-btn');
+
+  const colors = [];
+  document.querySelectorAll('.color-hero-swatch').forEach(el => {
+    const hex = el.querySelector('.color-hex')?.textContent.trim();
+    const name = el.querySelector('.color-name')?.textContent.trim();
+    if (hex) colors.push({ hex, name: name || '' });
+  });
+  document.querySelectorAll('.color-chip-swatch[data-hex]').forEach(el => {
+    colors.push({ hex: el.getAttribute('data-hex'), name: '' });
+  });
+
+  const swatchW = 140, swatchH = 100, labelH = 40, pad = 24, cols = 4;
+  const rows = Math.ceil(colors.length / cols);
+  const W = cols * (swatchW + pad) + pad;
+  const H = pad * 2 + 20 + rows * (swatchH + labelH + pad);
+
+  const canvas = document.createElement('canvas');
+  canvas.width = W * 2; canvas.height = H * 2;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(2, 2);
+
+  // Background
+  ctx.fillStyle = '#0C1F33';
+  ctx.fillRect(0, 0, W, H);
+
+  // Title
+  ctx.fillStyle = 'rgba(255,255,255,0.3)';
+  ctx.font = '500 10px "Courier New", monospace';
+  ctx.fillText('MIRI COLOUR PALETTE', pad, pad - 2);
+
+  colors.forEach((c, i) => {
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+    const x = pad + col * (swatchW + pad);
+    const y = pad + 16 + row * (swatchH + labelH + pad);
+
+    // Swatch rounded rect
+    ctx.fillStyle = c.hex;
+    ctx.beginPath();
+    ctx.roundRect(x, y, swatchW, swatchH, 8);
+    ctx.fill();
+
+    // Border for light swatches
+    if (parseInt(c.hex.replace('#',''), 16) > 0xaaaaaa) {
+      ctx.strokeStyle = 'rgba(0,0,0,0.1)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    // Name (if present)
+    if (c.name) {
+      ctx.fillStyle = 'rgba(255,255,255,0.8)';
+      ctx.font = '400 11px "Inter Tight", Arial, sans-serif';
+      ctx.fillText(c.name, x, y + swatchH + 16);
+    }
+
+    // Hex code
+    ctx.fillStyle = c.name ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.75)';
+    ctx.font = '400 10px "Courier New", monospace';
+    ctx.fillText(c.hex.toUpperCase(), x, y + swatchH + (c.name ? 30 : 18));
+  });
+
+  try {
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+    btn.innerHTML = '✓ Copied!';
+    btn.style.color = '#e2ad75';
+    btn.style.borderColor = 'rgba(226,173,117,0.4)';
+    setTimeout(() => {
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="3" width="9" height="10" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M4 3V2.5A1.5 1.5 0 0 1 5.5 1h7A1.5 1.5 0 0 1 14 2.5v7A1.5 1.5 0 0 1 12.5 11H12" stroke="currentColor" stroke-width="1.3"/></svg> Copy palette as PNG';
+      btn.style.color = '';
+      btn.style.borderColor = '';
+    }, 2000);
+  } catch(e) {
+    showToast('Copy failed — try Chrome/Edge');
+  }
+}
+</script>
+</body>
+</html>
