@@ -602,6 +602,16 @@
           <strong style="color:rgba(255,255,255,0.5);">Use for:</strong> H1–H4, CTA text, pull quotes, button labels
         </div>
         <div class="type-font-image"><img src="images/ivyjournal-example.jpg" alt="IvyJournal typeface specimen" /></div>
+        <a href="https://fonts.adobe.com/fonts/ivy-journal" target="_blank" rel="noopener" style="
+          display:inline-flex; align-items:center; gap:8px; margin-top:20px;
+          background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+          border-radius:100px; padding:8px 18px;
+          font-family:'Inter Tight',sans-serif; font-size:12px; font-weight:500;
+          color:rgba(255,255,255,0.7); text-decoration:none; letter-spacing:0.04em;
+          transition:background 0.2s, color 0.2s;">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Get on Adobe Fonts
+        </a>
       </div>
 
       <!-- Inter Tight -->
@@ -623,6 +633,16 @@
           </p>
           <p style="font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; text-transform: uppercase;">Inter Tight · Weight 300 · Website H2 subheadline</p>
         </div>
+        <a href="https://fonts.google.com/specimen/Inter+Tight" target="_blank" rel="noopener" style="
+          display:inline-flex; align-items:center; gap:8px; margin-top:20px;
+          background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+          border-radius:100px; padding:8px 18px;
+          font-family:'Inter Tight',sans-serif; font-size:12px; font-weight:500;
+          color:rgba(255,255,255,0.7); text-decoration:none; letter-spacing:0.04em;
+          transition:background 0.2s, color 0.2s;">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Get on Google Fonts
+        </a>
       </div>
     </div>
 
@@ -1000,54 +1020,4 @@
 
 <!-- ─── FOOTER ────────────────────────────────────────────────────────── -->
 <footer style="background:#0C1F33; border-top:1px solid rgba(255,255,255,0.06); padding:48px 60px 32px; text-align:center;">
-  <p style="font-family:'Inter Tight',sans-serif; font-size:12px; color:rgba(255,255,255,0.3); letter-spacing:0.12em; text-transform:uppercase;">MIRI Brand Style Guide — Machine Intelligence Research Institute</p>
-</footer>
-
-
-<!-- ─── COPY TO CLIPBOARD ──────────────────────────────────────────── -->
-<div id="copy-toast" style="
-  position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(20px);
-  background:#e2ad75; color:#0C1F33; font-family:'Inter Tight',sans-serif;
-  font-size:13px; font-weight:600; letter-spacing:0.08em;
-  padding:10px 22px; border-radius:100px;
-  opacity:0; pointer-events:none;
-  transition:opacity 0.2s ease, transform 0.2s ease;
-  z-index:9999;
-"></div>
-
-<script>
-function showToast(hex) {
-  const t = document.getElementById('copy-toast');
-  t.textContent = hex + ' copied';
-  t.style.opacity = '1';
-  t.style.transform = 'translateX(-50%) translateY(0)';
-  clearTimeout(t._timer);
-  t._timer = setTimeout(() => {
-    t.style.opacity = '0';
-    t.style.transform = 'translateX(-50%) translateY(20px)';
-  }, 1800);
-}
-
-function copyHex(hex) {
-  navigator.clipboard.writeText(hex).then(() => showToast(hex));
-}
-
-// Hero swatches — read from .color-hex child
-document.querySelectorAll('.color-hero-swatch').forEach(el => {
-  el.addEventListener('click', () => {
-    const hexEl = el.querySelector('.color-hex');
-    if (hexEl) copyHex(hexEl.textContent.trim());
-  });
-});
-
-// Chip swatches — read data-hex attribute
-document.querySelectorAll('.color-chip').forEach(el => {
-  el.addEventListener('click', () => {
-    const swatch = el.querySelector('[data-hex]');
-    if (swatch) copyHex(swatch.getAttribute('data-hex'));
-  });
-});
-</script>
-
-</body>
-</html>
+  <p style="font-family:'Inter Tight',sans-serif; font-size:12px; color:rgba(255,255,255,0.3); letter-spacing:0.12em; text-transform:uppercase;">MIRI Brand Style Guide — Machine Int
