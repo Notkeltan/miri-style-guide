@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MIRI Brand Style Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── DESIGN TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --navy-primary:   #0C1F33;
+      --navy-secondary: #234B7B;
+      --navy-deep:      #0D2136;
+      --navy-mid:       #183655;
+      --navy-rich:      #1a3e64;
+      --accent-pink:    #CC3366;
+      --gold:           #e2ad75;
+      --blue-slate:     #7a90a5;
+      --blue-light:     #d4e1ed;
+      --border-light:   #d4e1ed;  /* 1px border on grey/white bg */
+      --blue-mist:      #dbe2e9;
+      --off-white:      #f0f2f5;
+      --white:          #ffffff;
+      --font-serif:     'IvyJournal', 'Georgia', serif;
+      --font-sans:      'Inter Tight', 'Inter', sans-serif;
+    }
+
+    /* ─── RESET + BASE ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--navy-primary);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── LAYOUT ────────────────────────────────────────────────────── */
+    section { padding: 100px 60px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* ─── NAV ───────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 60px;
+      background: rgba(12, 31, 51, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img { height: 32px; width: auto; }
+    .nav-logo-text {
+      font-family: 'Palatino Linotype', 'Palatino', Georgia, serif;
+      font-size: 15px; font-weight: 400;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--white); opacity: 0.85;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.6); text-decoration: none;
+      font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+      font-weight: 500; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ─── HERO ──────────────────────────────────────────────────────── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden; padding: 0 60px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, #0c1f33 0%, #0d2136 50%, #183655 100%);
+    }
+    .hero-lightcone {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 55%; object-fit: cover; object-position: center top;
+      opacity: 0.35;
+      mask-image: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      padding-top: 120px;
+    }
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 24px; font-weight: 500;
+    }
+    .hero-title {
+      font-family: 'Palatino Linotype', 'Palatino', Georgia, serif;
+      font-size: clamp(52px, 7vw, 96px); font-weight: 400;
+      line-height: 1.05; letter-spacing: -0.02em;
+      color: var(--white); margin-bottom: 28px;
+    }
+    .hero-title span { color: var(--gold); }
+    .hero-subtitle {
+      font-size: 17px; color: rgba(255,255,255,0.55);
+      max-width: 480px; line-height: 1.7; font-weight: 300;
+    }
+    .hero-meta { display: flex; gap: 48px; margin-top: 64px; }
+    .hero-meta-item .label {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-bottom: 6px;
+    }
+    .hero-meta-item .value { font-size: 14px; color: rgba(255,255,255,0.75); font-weight: 500; }
+    .hero-logo { position: absolute; right: 60px; top: 50%; transform: translateY(-50%); opacity: 0.9; }
+    .hero-logo img { width: 200px; height: auto; }
+
+    /* ─── SECTION LABELS ────────────────────────────────────────────── */
+    .section-label {
+      font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px; font-weight: 500;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .section-label::before {
+      content: ''; display: block; width: 32px; height: 1px;
+      background: var(--gold); opacity: 0.7;
+    }
+    .section-title {
+      font-family: 'Palatino Linotype', 'Palatino', Georgia, serif;
+      font-size: clamp(36px, 4vw, 56px); font-weight: 400;
+      line-height: 1.1; color: var(--white); margin-bottom: 16px;
+    }
+    .section-description {
+      font-size: 15px; color: rgba(255,255,255,0.5);
+      max-width: 540px; line-height: 1.7; font-weight: 300; margin-bottom: 64px;
+    }
+
+    /* ─── DIVIDER ───────────────────────────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+      margin: 0 60px;
+    }
+
+    /* ─── BORDER RULE ───────────────────────────────────────────────── */
+    /* On grey/white backgrounds, all card and section borders use:        */
+    /* border: 1px solid #d4e1ed  (var(--border-light))                   */
+
+    /* ─── COLORS ────────────────────────────────────────────────────── */
+    .colors-primary {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px; margin-bottom: 48px;
+      border-radius: 16px; overflow: hidden;
+    }
+    .color-hero-swatch {
+      height: 220px; display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 24px;
+      transition: transform 0.3s ease; cursor: default;
+    }
+    .color-hero-swatch:hover { transform: translateY(-4px); z-index: 2; }
+    .color-hero-swatch .color-role { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; margin-bottom: 6px; }
+    .color-hero-swatch .color-name { font-family: 'Palatino Linotype', 'Palatino', Georgia, serif; font-size: 18px; font-weight: 400; margin-bottom: 4px; }
+    .color-hero-swatch .color-hex { font-size: 12px; font-family: 'Courier New', monospace; opacity: 0.7; }
+
+    .colors-extended-title { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 24px; margin-top: 8px; }
+    .colors-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; }
+    .color-chip { position: relative; cursor: default; }
+    .color-chip-swatch {
+      height: 80px; border-radius: 10px; margin-bottom: 10px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative; overflow: hidden;
+    }
+    .color-chip-swatch::after {
+      content: attr(data-hex); position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-family: 'Courier New', monospace;
+      opacity: 0; transition: opacity 0.2s; background: rgba(0,0,0,0.3);
+    }
+    .color-chip:hover .color-chip-swatch { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .color-chip:hover .color-chip-swatch::after { opacity: 1; }
+    .color-chip-label { font-size: 9px; font-family: 'Courier New', monospace; color: rgba(255,255,255,0.5); }
+
+    .color-usage { margin-top: 64px; }
+    .usage-title { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 28px; }
+    .usage-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .usage-card { border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); }
+    .usage-card img { width: 100%; height: auto; display: block; }
+    .usage-card-label { padding: 12px 16px; background: rgba(255,255,255,0.04); font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.05em; }
+
+    /* ─── TYPOGRAPHY ────────────────────────────────────────────────── */
+    .type-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 64px; }
+    .type-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px; padding: 48px; position: relative; overflow: hidden;
+    }
+    .type-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.4;
+    }
+    .type-badge {
+      font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 32px; display: inline-block;
+      border: 1px solid rgba(226, 173, 117, 0.3); padding: 5px 12px; border-radius: 100px;
+    }
+    .type-specimen-serif {
+      font-family: 'Palatino Linotype', 'Palatino', Georgia, serif;
+      font-size: 52px; font-weight: 400; line-height: 1.1;
+      color: var(--white); margin-bottom: 24px; letter-spacing: -0.01em;
+    }
+    .type-specimen-serif em { font-style: italic; color: var(--gold); }
+    .type-specimen-sans {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 36px; font-weight: 300; line-height: 1.2;
+      color: var(--white); margin-bottom: 24px; letter-spacing: -0.01em;
+    }
+    .type-specimen-sans strong { font-weight: 600; }
+    .type-detail { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+    .type-detail span { color: rgba(255,255,255,0.7); }
+
+    /* Type scale */
+    .type-scale {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px; padding: 48px;
+    }
+    .scale-title { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 36px; }
+    .scale-row { display: flex; align-items: baseline; gap: 24px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .scale-row:last-child { border-bottom: none; }
+    .scale-meta { font-size: 10px; font-family: 'Courier New', monospace; color: rgba(255,255,255,0.3); width: 90px; flex-shrink: 0; }
+    .scale-tag { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.25); width: 80px; flex-shrink: 0; padding: 3px 8px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; text-align: center; }
+    .scale-note { font-size: 9px; color: rgba(255,255,255,0.2); margin-top: 4px; font-family: 'Courier New', monospace; display: block; }
+
+    .type-font-image { margin-top: 32px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); }
+    .type-font-image img { width: 100%; height: auto; display: block; }
+
+    /* ─── LOGO VARIANTS ─────────────────────────────────────────────── */
+    .logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .logo-card {
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px; overflow: hidden;
+    }
+    .logo-swatch {
+      display: flex; align-items: center; justify-content: center;
+      padding: 60px; min-height: 200px;
+    }
+    .logo-swatch img { max-width: 200px; max-height: 80px; width: auto; height: auto; }
+    .logo-info { padding: 20px 24px; border-top: 1px solid rgba(255,255,255,0.06); background: rgba(0,0,0,0.2); }
+    .logo-info-name { font-size: 14px; font-weight: 500; margin-bottom: 6px; color: rgba(255,255,255,0.85); }
+    .logo-info-desc { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+    /* ─── UI COMPONENTS ─────────────────────────────────────────────── */
+    .component-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+    .component-card {
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px; padding: 32px; position: relative;
+    }
+    .component-label {
+      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); margin-bottom: 24px;
+    }
+
+    /* Nav demo */
+    .demo-nav {
+      background: rgba(12,31,51,0.95); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 14px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .demo-nav-brand { display: flex; align-items: center; gap: 10px; }
+    .demo-nav-brand img { height: 22px; }
+    .demo-nav-links { display: flex; gap: 20px; }
+    .demo-nav-links span { font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 0.08em; }
+    .demo-nav-cta {
+      background: transparent; color: white;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+      padding: 7px 16px; border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+
+    /* Announcement bar demo */
+    .demo-announcement {
+      background: var(--gold); border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 8px; padding: 10px 20px; text-align: center;
+      font-size: 12px; color: var(--navy-primary); font-style: italic;
+    }
+    .demo-announcement em { font-style: normal; font-weight: 600; color: var(--navy-primary); }
+
+    /* Button demos */
+    .btn-demo-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    .btn-primary {
+      background: var(--accent-pink); color: white;
+      font-family: 'Palatino Linotype', 'Palatino', Georgia, serif;
+      font-size: 15px; font-weight: 400;
+      padding: 14px 32px; border-radius: 6px; border: none; cursor: pointer;
+      transition: opacity 0.2s; display: inline-block;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-outline {
+      background: transparent; color: white;
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 13px; font-weight: 500; letter-spacing: 0.05em;
+      padding: 12px 28px; border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.3);
+      display: inline-block; cursor: pointer; transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: white; }
+    .btn-ghost-pill {
+      background: transparent; color: var(--navy-primary);
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 14px; font-weight: 400;
+      padding: 13px 32px; border-radius: 100px;
+      border: 1.5px solid rgba(12,31,51,0.35);
+      display: inline-block; cursor: pointer; transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost-pill:hover { border-color: var(--navy-primary); background: rgba(12,31,51,0.05); }
+    .btn-donate {
+      background: #1a3e64; color: white;
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 13px; font-weight: 500; letter-spacing: 0.05em;
+      padding: 12px 28px; border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: inline-block; cursor: pointer; transition: background 0.2s;
+    }
+    .btn-donate:hover { background: #234B7B; }
+    .btn-text {
+      background: transparent; color: rgba(255,255,255,0.7);
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 13px; font-weight: 500; letter-spacing: 0.05em;
+      display: inline-flex; align-items: center; gap: 8px;
+      border: none; cursor: pointer; transition: color 0.2s;
+    }
+    .btn-text::after { content: '↓'; font-size: 14px; }
+    .btn-text:hover { color: white; }
+
+    /* Callout box demo */
+    .demo-callout {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-left: 3px solid var(--accent-pink);
+      border-radius: 0 8px 8px 0; padding: 16px 20px;
+      font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6;
+    }
+    .demo-callout a { color: var(--accent-pink); text-decoration: underline; }
+
+    /* Content card demo */
+    .demo-card-row { display: flex; gap: 16px; }
+    .demo-content-card {
+      flex: 1; background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px; padding: 24px;
+      transition: border-color 0.2s; cursor: default;
+    }
+    .demo-content-card:hover { border-color: rgba(255,255,255,0.15); }
+    .demo-content-card-eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .demo-content-card-title {
+      font-family: 'Palatino Linotype', 'Palatino', Georgia, serif;
+      font-size: 20px; font-weight: 400; margin-bottom: 10px; color: var(--white);
+    }
+    .demo-content-card-body { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; margin-bottom: 16px; }
+    .demo-content-card-link { font-size: 12px; color: var(--accent-pink); font-weight: 500; }
+
+    /* Pull quote */
+    .demo-pull-quote {
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
+      padding: 20px 24px;
+      font-style: italic; font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.7;
+    }
+    .demo-pull-quote strong { font-style: normal; color: rgba(255,255,255,0.8); font-weight: 600; }
+
+    /* ToC demo */
+    .demo-toc {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px; padding: 20px 24px;
+    }
+    .demo-toc-heading { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
+    .demo-toc-item { font-size: 13px; color: var(--accent-pink); padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .demo-toc-item:last-child { border-bottom: none; }
+
+    /* ─── PAGE LAYOUTS ──────────────────────────────────────────────── */
+    .layout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .layout-card {
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px; overflow: hidden;
+    }
+    .layout-diagram { padding: 32px; }
+    .layout-block {
+      background: rgba(255,255,255,0.06); border-radius: 6px; margin-bottom: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); font-family: 'Courier New', monospace;
+    }
+    .layout-info { padding: 20px 24px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .layout-info h4 { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+    .layout-info p { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+    /* ─── SHAPES ────────────────────────────────────────────────────── */
+    .shapes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 48px; }
+    .shape-card {
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px; padding: 48px; position: relative;
+    }
+    .shape-card-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 28px; }
+    .shape-card img { width: 100%; height: auto; display: block; }
+    .shape-card-description { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-top: 24px; }
+    .singularity-full {
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px; overflow: hidden; position: relative;
+    }
+    .singularity-full img { width: 100%; height: auto; display: block; }
+    .singularity-caption { padding: 24px 32px; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(255,255,255,0.06); }
+    .singularity-caption h3 { font-family: 'Palatino Linotype', 'Palatino', Georgia, serif; font-size: 20px; font-weight: 400; margin-bottom: 8px; }
+    .singularity-caption p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+    .website-example { margin-top: 48px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); position: relative; }
+    .website-example img { width: 100%; height: auto; display: block; }
+    .website-example-label {
+      position: absolute; top: 16px; left: 20px;
+      background: rgba(12, 31, 51, 0.8); backdrop-filter: blur(8px);
+      padding: 6px 14px; border-radius: 100px;
+      font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6);
+    }
+
+    /* ─── CORNER ACCENT ─────────────────────────────────────────────── */
+    .corner-accent { position: absolute; top: 48px; right: 48px; width: 80px; height: 80px; border-top: 1px solid rgba(255,255,255,0.08); border-right: 1px solid rgba(255,255,255,0.08); }
+
+    /* ─── FOOTER ────────────────────────────────────────────────────── */
+    footer {
+      background: var(--navy-deep); border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 60px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 14px; }
+    .footer-logo img { height: 28px; width: auto; opacity: 0.7; }
+    .footer-logo-text { font-family: 'Palatino Linotype', 'Palatino', Georgia, serif; font-size: 14px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .footer-meta { font-size: 11px; color: rgba(255,255,255,0.25); text-align: right; line-height: 1.8; }
+
+    /* ─── SCROLL HINT ───────────────────────────────────────────────── */
+    .scroll-hint {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      color: rgba(255,255,255,0.3); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      animation: fadeInUp 1s ease 1s both;
+    }
+    .scroll-hint-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent); animation: scrollLine 2s ease-in-out infinite; }
+    @keyframes scrollLine { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      section { padding: 60px 28px; }
+      nav, footer { padding: 16px 28px; }
+      .divider { margin: 0 28px; }
+      .type-showcase, .shapes-grid, .component-grid, .logo-grid, .layout-grid { grid-template-columns: 1fr; }
+      .colors-primary { grid-template-columns: repeat(2, 1fr); }
+      .colors-grid { grid-template-columns: repeat(4, 1fr); }
+      .usage-grid { grid-template-columns: 1fr; }
+      .hero-logo, .nav-links { display: none; }
+      .demo-card-row { flex-direction: column; }
+    }
+
+    /* ─── PRINT / PDF STYLES ────────────────────────────────────────── */
+    @media print {
+      /* Page setup — select "None" margins in browser dialog to use these */
+      @page {
+        size: A4;
+        margin: 14mm 16mm 14mm 16mm;
+      }
+
+      /* Hide screen-only / decorative elements */
+      nav,
+      .site-nav,
+      .hero,
+      .hero-scroll-hint { display: none !important; }
+
+      /* Dark backgrounds print fine — keep them */
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+      /* Page breaks */
+      .section-header { break-before: page; }
+      .section-header:first-of-type { break-before: avoid; }
+      .component-card,
+      .logo-card,
+      .swatch-card,
+      .type-sample,
+      .shape-card,
+      .layout-card { break-inside: avoid; }
+
+      /* Prevent orphaned headings */
+      h2, h3, h4 { break-after: avoid; }
+
+      /* Full width — no clipping */
+      body { margin: 0; }
+      .page-wrap { padding: 0 !important; }
+
+      /* Grids that are 2-col on screen → stay 2-col in print */
+      .colors-primary { grid-template-columns: repeat(4, 1fr) !important; }
+      .colors-grid    { grid-template-columns: repeat(6, 1fr) !important; }
+      .logo-grid      { grid-template-columns: 1fr 1fr !important; }
+      .type-showcase  { grid-template-columns: 1fr 1fr !important; }
+      .shapes-grid    { grid-template-columns: 1fr 1fr !important; }
+      .component-grid { grid-template-columns: 1fr 1fr !important; }
+
+      /* Cards that span full grid width */
+      [style*="grid-column:1/-1"] { grid-column: 1 / -1 !important; }
+
+      /* Ensure images never distort or overflow */
+      img {
+        max-width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+        object-position: center !important;
+      }
+      .logo-swatch img { max-width: 220px !important; max-height: 100px !important; }
+      .hero-logo img, .hero-bg-logo { display: none !important; }
+      .singularity-full img { max-height: 320px !important; width: 100% !important; }
+      .shape-card img { max-height: 220px !important; width: 100% !important; }
+      .usage-card img { max-height: 90px !important; width: auto !important; }
+
+      /* Links — don't show URLs */
+      a::after { content: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ──────────────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-logo">
+    <img src="images/logos/logo-mark-hires.png" alt="MIRI Lightcone Logo" style="filter:brightness(0) invert(1);" />
+    <span class="nav-logo-text">MIRI · Brand Guide</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#colors">Colour</a></li>
+    <li><a href="#typography">Typography</a></li>
+    <li><a href="#logos">Logo</a></li>
+    <li><a href="#components">UI Components</a></li>
+    <li><a href="#shapes">Motifs</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ──────────────────────────────────────────────────────────── -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <img class="hero-lightcone" src="images/motifs/singularity-website.png" alt="" role="presentation" />
+  <div class="hero-content">
+    <div class="hero-eyebrow">Brand Identity System · 2025</div>
+    <h1 class="hero-title">MIRI<br><span>Style Guide</span></h1>
+    <p class="hero-subtitle">
+      The visual language of the Machine Intelligence Research Institute —
+      a reference for colour, type, logo, components, and motif usage across all branded materials.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="label">Primary Typeface</div><div class="value">Ivy Journal</div></div>
+      <div class="hero-meta-item"><div class="label">Body Typeface</div><div class="value">Inter Tight</div></div>
+      <div class="hero-meta-item"><div class="label">Primary Colour</div><div class="value" style="color: var(--gold);">#0C1F33</div></div>
+      <div class="hero-meta-item"><div class="label">Accent</div><div class="value" style="color: #CC3366;">#CC3366</div></div>
+    </div>
+  </div>
+  <div class="hero-logo">
+    <img src="images/logos/logo-bottom-text.png" alt="MIRI Lightcone" />
+  </div>
+  <div class="scroll-hint"><div class="scroll-hint-line"></div>Scroll</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── COLORS ────────────────────────────────────────────────────────── -->
+<section id="colors">
+  <div class="container">
+    <div class="section-label">01 — Colour Palette</div>
+    <h2 class="section-title">Brand Colours</h2>
+    <p class="section-description">
+      MIRI's palette is anchored by deep navy blues evoking precision and gravity,
+      punctuated by a warm gold and vivid accent pink for moments of emphasis and action.
+      The Elementor kit defines four semantic roles: primary, secondary, text, and accent.
+    </p>
+
+    <div class="colors-primary">
+      <div class="color-hero-swatch" style="background:#0C1F33; color:#fff;">
+        <div class="color-role">Primary · Background</div>
+        <div class="color-name">Dark Navy</div>
+        <div class="color-hex">#0C1F33</div>
+      </div>
+      <div class="color-hero-swatch" style="background:#234B7B; color:#fff;">
+        <div class="color-role">Secondary · Highlights</div>
+        <div class="color-name">Ocean Blue</div>
+        <div class="color-hex">#234B7B</div>
+      </div>
+      <div class="color-hero-swatch" style="background:#0D2136; color:#fff;">
+        <div class="color-role">Text · Dark Backgrounds</div>
+        <div class="color-name">Ink Navy</div>
+        <div class="color-hex">#0D2136</div>
+      </div>
+      <div class="color-hero-swatch" style="background:#CC3366; color:#fff;">
+        <div class="color-role">Accent · CTAs · Links</div>
+        <div class="color-name">Vivid Pink</div>
+        <div class="color-hex">#CC3366</div>
+      </div>
+    </div>
+
+    <p class="colors-extended-title">Extended Palette</p>
+    <div class="colors-grid">
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#183655; border:1px solid rgba(255,255,255,0.08);" data-hex="#183655"></div><div class="color-chip-label">#183655</div></div>
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#1a3e64; border:1px solid rgba(255,255,255,0.08);" data-hex="#1a3e64"></div><div class="color-chip-label">#1a3e64</div></div>
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#e2ad75;" data-hex="#e2ad75"></div><div class="color-chip-label">#e2ad75</div></div>
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#7a90a5;" data-hex="#7a90a5"></div><div class="color-chip-label">#7a90a5</div></div>
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#d4e1ed;" data-hex="#d4e1ed"></div><div class="color-chip-label">#d4e1ed</div></div>
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#dbe2e9;" data-hex="#dbe2e9"></div><div class="color-chip-label">#dbe2e9</div></div>
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#f0f2f5;" data-hex="#f0f2f5"></div><div class="color-chip-label">#f0f2f5</div></div>
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#ffffff; border:1px solid rgba(255,255,255,0.12);" data-hex="#ffffff"></div><div class="color-chip-label">#ffffff</div></div>
+    </div>
+
+    <div class="color-usage">
+      <p class="usage-title">Colours in use</p>
+      <div class="usage-grid">
+        <div class="usage-card"><img src="images/example-uses/cc3366.png" alt="#CC3366 accent pink on headings" /><div class="usage-card-label">#CC3366 — Accent pink on headings &amp; interactive elements</div></div>
+        <div class="usage-card"><img src="images/example-uses/183655.png" alt="#183655 navy on page backgrounds" /><div class="usage-card-label">#183655 — Deep navy on page backgrounds</div></div>
+        <div class="usage-card"><img src="images/example-uses/e2ad75.png" alt="#e2ad75 gold on highlight strips" /><div class="usage-card-label">#e2ad75 — Gold on highlight strips &amp; borders</div></div>
+        <div class="usage-card"><img src="images/example-uses/dbe2e9.png" alt="#dbe2e9 light blue-grey on section backgrounds" /><div class="usage-card-label">#dbe2e9 — Light blue-grey on section backgrounds</div></div>
+      </div>
+    </div>
+
+    <!-- Border rule -->
+    <div style="margin-top:48px;">
+      <p class="usage-title">Border Rule — Light Backgrounds</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div style="background:#f0f2f5; border-radius:12px; padding:32px; border:1px solid #d4e1ed;">
+          <p style="font-family:'Inter Tight',sans-serif; font-size:13px; color:#0C1F33; line-height:1.6; margin-bottom:12px;">Section card on <code style="background:rgba(0,0,0,0.08); padding:2px 6px; border-radius:4px; font-size:11px;">#f0f2f5</code> background</p>
+          <p style="font-family:'Courier New',monospace; font-size:11px; color:#7a90a5;">border: 1px solid #d4e1ed</p>
+        </div>
+        <div style="background:#ffffff; border-radius:12px; padding:32px; border:1px solid #d4e1ed;">
+          <p style="font-family:'Inter Tight',sans-serif; font-size:13px; color:#0C1F33; line-height:1.6; margin-bottom:12px;">Section card on <code style="background:rgba(0,0,0,0.08); padding:2px 6px; border-radius:4px; font-size:11px;">#ffffff</code> background</p>
+          <p style="font-family:'Courier New',monospace; font-size:11px; color:#7a90a5;">border: 1px solid #d4e1ed</p>
+        </div>
+        <div style="background:#dbe2e9; border-radius:12px; padding:32px; border:1px solid #d4e1ed; grid-column:1/-1;">
+          <p style="font-family:'Inter Tight',sans-serif; font-size:13px; color:#0C1F33; margin-bottom:8px;">On <code style="background:rgba(0,0,0,0.08); padding:2px 6px; border-radius:4px; font-size:11px;">#dbe2e9</code> — use the same border. On dark navy backgrounds, use <code style="background:rgba(0,0,0,0.08); padding:2px 6px; border-radius:4px; font-size:11px;">rgba(255,255,255,0.06–0.12)</code> instead.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── TYPOGRAPHY ────────────────────────────────────────────────────── -->
+<section id="typography" style="background: linear-gradient(180deg, var(--navy-primary) 0%, #0a1825 100%);">
+  <div class="container">
+    <div class="section-label">02 — Typography</div>
+    <h2 class="section-title">Type System</h2>
+    <p class="section-description">
+      Two typefaces define MIRI's voice — an elegant serif for authority and presence,
+      paired with a precise sans-serif for clarity and readability.
+    </p>
+
+    <div class="type-showcase">
+      <!-- Ivy Journal -->
+      <div class="type-card">
+        <div class="type-badge">Headings · Buttons · CTA</div>
+        <div class="type-specimen-serif">Ivy<em>Journal</em></div>
+        <div class="type-detail" style="margin-bottom: 20px;">
+          <span>Ivy Journal</span> — serif used for all headings, button labels, and CTA titles.
+          Loaded via Adobe Fonts (Typekit kit <span>czh2yqb</span>). Set as both primary and secondary
+          global typography in Elementor at weight 400.
+        </div>
+        <div class="type-detail" style="margin-bottom: 24px;">
+          <strong style="color:rgba(255,255,255,0.5);">Use for:</strong> H1–H4, CTA text, pull quotes, button labels
+        </div>
+        <div class="type-font-image"><img src="images/ivyjournal-example.jpg" alt="IvyJournal typeface specimen" /></div>
+      </div>
+
+      <!-- Inter Tight -->
+      <div class="type-card">
+        <div class="type-badge">Body · UI · Labels</div>
+        <div class="type-specimen-sans"><strong>Inter</strong> Tight</div>
+        <div class="type-detail" style="margin-bottom: 20px;">
+          <span>Inter Tight</span> — variable sans-serif for all body text and UI elements.
+          Loaded self-hosted via Elementor's Google Fonts integration and from the Adobe Typekit kit as
+          <span>"inter-tight-variable"</span>. Set as the "text" global typography.
+          Fallback: <span>sans-serif</span>, Font Awesome / <span>eicons</span> for icons.
+        </div>
+        <div class="type-detail" style="margin-bottom: 24px;">
+          <strong style="color:rgba(255,255,255,0.5);">Use for:</strong> Body copy, captions, labels, navigation, metadata
+        </div>
+        <div style="margin-top: 16px; padding: 28px; background: rgba(255,255,255,0.03); border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
+          <p style="font-size: 22px; font-weight: 300; line-height: 1.4; color: rgba(255,255,255,0.85); margin-bottom: 12px;">
+            The default consequence of the creation of artificial superintelligence (ASI) is human extinction.
+          </p>
+          <p style="font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; text-transform: uppercase;">Inter Tight · Weight 300 · Website H2 subheadline</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Type scale — sourced from intelligence.org live site -->
+    <div class="type-scale">
+      <p class="scale-title">Typographic Scale — sourced from intelligence.org</p>
+
+      <!-- Display / Hero H1 -->
+      <div class="scale-row">
+        <div>
+          <div class="scale-meta">~64–72px</div>
+          <span class="scale-note">Ivy Journal · wt 400</span>
+        </div>
+        <div class="scale-tag">H1 Hero</div>
+        <div style="font-family:'Palatino Linotype','Palatino',Georgia,serif; font-size:clamp(36px,5vw,64px); font-weight:400; line-height:1.05; color:rgba(255,255,255,0.92); letter-spacing:-0.01em;">
+          The AI industry is racing toward a precipice.
+        </div>
+      </div>
+
+      <!-- H2 — bold subheadline -->
+      <div class="scale-row">
+        <div>
+          <div class="scale-meta">~28–36px</div>
+          <span class="scale-note">Ivy Journal · wt 400</span>
+        </div>
+        <div class="scale-tag">H2</div>
+        <div style="font-family:'Palatino Linotype','Palatino',Georgia,serif; font-size:clamp(22px,3vw,32px); font-weight:400; line-height:1.2; color:rgba(255,255,255,0.88);">
+          The default consequence of the creation of ASI is human extinction.
+        </div>
+      </div>
+
+      <!-- H2 section heading -->
+      <div class="scale-row">
+        <div>
+          <div class="scale-meta">~24–28px</div>
+          <span class="scale-note">Ivy Journal · wt 400</span>
+        </div>
+        <div class="scale-tag">H2 Section</div>
+        <div style="font-family:'Palatino Linotype','Palatino',Georgia,serif; font-size:clamp(20px,2.5vw,26px); font-weight:400; color:rgba(255,255,255,0.85);">
+          Our view
+        </div>
+      </div>
+
+      <!-- H3 — article subsections -->
+      <div class="scale-row">
+        <div>
+          <div class="scale-meta">~20–22px</div>
+          <span class="scale-note">Inter Tight · wt 600</span>
+        </div>
+        <div class="scale-tag">H3</div>
+        <div style="font-family:'Inter Tight',sans-serif; font-size:clamp(17px,2vw,20px); font-weight:600; color:rgba(255,255,255,0.82);">
+          1. There isn't a ceiling at human-level capabilities.
+        </div>
+      </div>
+
+      <!-- H4 label -->
+      <div class="scale-row">
+        <div>
+          <div class="scale-meta">~14–16px</div>
+          <span class="scale-note">Inter Tight · wt 500</span>
+        </div>
+        <div class="scale-tag">H4 Label</div>
+        <div style="font-family:'Inter Tight',sans-serif; font-size:14px; font-weight:500; letter-spacing:0.05em; text-transform:uppercase; color:rgba(255,255,255,0.6);">
+          Table of Contents
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="scale-row">
+        <div>
+          <div class="scale-meta">~16–18px</div>
+          <span class="scale-note">Inter Tight · wt 300–400</span>
+        </div>
+        <div class="scale-tag">Body</div>
+        <div style="font-family:'Inter Tight',sans-serif; font-size:16px; font-weight:300; line-height:1.75; color:rgba(255,255,255,0.62); max-width:600px;">
+          Our survival depends on delaying the creation of ASI, as soon as we can, for as long as necessary.
+          Recent rapid advances have dramatically shortened estimates of when superintelligence will arrive.
+        </div>
+      </div>
+
+      <!-- Caption -->
+      <div class="scale-row">
+        <div>
+          <div class="scale-meta">11–12px</div>
+          <span class="scale-note">Inter Tight · wt 400–500</span>
+        </div>
+        <div class="scale-tag">Caption</div>
+        <div style="font-family:'Inter Tight',sans-serif; font-size:11px; font-weight:400; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase;">
+          Machine Intelligence Research Institute · Berkeley, California
+        </div>
+      </div>
+
+      <p style="margin-top:24px; font-size:11px; color:rgba(255,255,255,0.2); font-style:italic;">
+        Note: Pixel sizes are approximate — Elementor serves these as responsive vw/em units in practice.
+        Hierarchy sourced from the live content structure at intelligence.org.
+        Ivy Journal requires Adobe Fonts (Typekit kit czh2yqb); Palatino used here as fallback.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── LOGO VARIANTS ─────────────────────────────────────────────────── -->
+<section id="logos">
+  <div class="container">
+    <div class="section-label">03 — Logo</div>
+    <h2 class="section-title">Logo Variants</h2>
+    <p class="section-description">
+      MIRI uses two marks: the Singularity logomark (icon only) and a full wordmark lockup.
+      Both are white-on-navy by default. The transparent PNG variants (Bottom Text, Side Text) have no background
+      and sit cleanly on any dark surface. The upscaled mark is navy on transparent — use a CSS
+      <code style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;font-size:12px;">filter: brightness(0) invert(1)</code> to render it white on dark backgrounds.
+    </p>
+
+    <div class="logo-grid">
+      <div class="logo-card">
+        <div class="logo-swatch" style="background:#183655;">
+          <img src="images/logos/logo-bottom-text.png" alt="MIRI Singularity mark — white on navy" style="max-width:220px;" />
+        </div>
+        <div class="logo-info">
+          <div class="logo-info-name">Singularity Mark — White on Navy</div>
+          <div class="logo-info-desc">Primary usage. Icon-only mark used as favicon, social avatar, and standalone brand element. Always white on dark navy.</div>
+        </div>
+      </div>
+      <div class="logo-card">
+        <div class="logo-swatch" style="background:#f0f2f5;">
+          <img src="images/logos/logo-mark-hires.png" alt="MIRI Singularity mark — dark on light" style="max-width:220px;" />
+        </div>
+        <div class="logo-info">
+          <div class="logo-info-name">Singularity Mark — Dark on Light</div>
+          <div class="logo-info-desc">Use on light backgrounds (#f0f2f5, white). Invert to dark navy. Never use on coloured backgrounds other than navy or off-white.</div>
+        </div>
+      </div>
+      <div class="logo-card" style="grid-column:1/-1;">
+        <div class="logo-swatch" style="background:#0C1F33; min-height:160px; flex-direction:column; gap:16px;">
+          <img src="images/logos/logo-side-text.png" alt="Full wordmark — side text lockup" style="max-width:320px; height:auto;" />
+          <p style="font-family:'Palatino Linotype','Palatino',Georgia,serif; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:rgba(255,255,255,0.45);">Machine Intelligence Research Institute</p>
+        </div>
+        <div class="logo-info">
+          <div class="logo-info-name">Full Wordmark — Mark + Name</div>
+          <div class="logo-info-desc">Used in site navigation and footer. The full organisation name appears in Ivy Journal, letter-spaced. The nav SVG (Group-47.svg) combines both into a single lockup.</div>
+        </div>
+      </div>
+
+      <!-- Full-colour legacy variant -->
+      <div class="logo-card" style="grid-column:1/-1; margin-top:8px;">
+        <div class="logo-swatch" style="background:#ffffff; min-height:200px;">
+          <img src="images/logos/logo-full-color.jpg" alt="MIRI full-colour logo — legacy variant" style="max-width:200px; height:auto;" />
+        </div>
+        <div class="logo-info">
+          <div class="logo-info-name">Full-Colour Mark — Legacy / Social Avatar Variant</div>
+          <div class="logo-info-desc">Older full-colour variant with orange, green, and blue feathers and a "MIRI" wordmark. Used as the YouTube channel avatar and in legacy contexts. The current website uses the single-colour white or navy version exclusively. Displayed here on white — the JPG has a white background already so it blends naturally.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── UI COMPONENTS ─────────────────────────────────────────────────── -->
+<section id="components">
+  <div class="container">
+    <div class="section-label">04 — UI Components</div>
+    <h2 class="section-title">Components &amp; Patterns</h2>
+    <p class="section-description">
+      Recurring interface elements sourced from intelligence.org. These patterns form the building blocks of MIRI's pages.
+    </p>
+
+    <div class="component-grid">
+      <div class="component-card" style="grid-column:1/-1;">
+        <div class="component-label">Announcement Bar</div>
+        <div class="demo-announcement">Check out <em>The AI Doc</em>, streaming April 14th. &nbsp;→</div>
+        <p style="font-size:12px; color:rgba(255,255,255,0.3); margin-top:16px; line-height:1.6;">A narrow full-width bar above the nav. Gold (#e2ad75) background with dark navy text. Italic text with bolded title, links to external content. Used for book releases, events, announcements.</p>
+      </div>
+      <div class="component-card" style="grid-column:1/-1;">
+        <div class="component-label">Navigation Bar</div>
+        <div class="demo-nav">
+          <div class="demo-nav-brand"><img src="images/logos/logo-mark-hires.png" alt="MIRI" style="height:22px; width:auto; filter:brightness(0) invert(1);" /></div>
+          <div class="demo-nav-links"><span>The Problem</span><span>Research</span><span>About Us</span><span>Updates</span></div>
+          <div class="demo-nav-cta">Donate</div>
+        </div>
+        <p style="font-size:12px; color:rgba(255,255,255,0.3); margin-top:16px; line-height:1.6;">Fixed/sticky. Semi-transparent navy with backdrop blur. Logo left, nav links centre, Donate button right. The Donate/Subscribe button uses <strong style="color:rgba(255,255,255,0.7);">#1a3e64</strong> (navy-rich) on the dark #0C1F33 background — a subtle distinction rather than the accent pink. Links in Inter Tight small-caps, weight 500.</p>
+      </div>
+    </div>
+
+    <div class="component-card" style="margin-bottom:24px;">
+      <div class="component-label">Buttons</div>
+      <div class="btn-demo-row">
+        <div class="btn-primary">Available now</div>
+        <div class="btn-ghost-pill">Available now</div>
+        <div class="btn-donate">Donate</div>
+        <div class="btn-outline">More about AI catastrophe</div>
+        <div class="btn-text">Read more</div>
+      </div>
+      <p style="font-size:12px; color:rgba(255,255,255,0.3); margin-top:20px; line-height:1.6;">
+        <strong style="color:rgba(255,255,255,0.5);">Primary (Filled):</strong> #CC3366, white text, Ivy Journal ~15px, 6px radius — used for main CTAs like "Available now".<br>
+        <strong style="color:rgba(255,255,255,0.5);">Ghost / Pill:</strong> Transparent bg, 1.5px navy border, border-radius 100px — used on light/white backgrounds (e.g. "Available now" pill). On dark navy, use a white-border ghost variant.<br>
+        <strong style="color:rgba(255,255,255,0.5);">Donate / Subscribe:</strong> Background #1a3e64 (navy-rich), subtle white border — used on dark #0C1F33 backgrounds as a secondary CTA. Not accent pink.<br>
+        <strong style="color:rgba(255,255,255,0.5);">Outline:</strong> Transparent, white border, Inter Tight 500 — "More about AI catastrophe".<br>
+        <strong style="color:rgba(255,255,255,0.5);">Text Link:</strong> No background, muted white, arrow suffix — "Read more ↓".
+      </p>
+    </div>
+
+    <div class="component-grid">
+      <div class="component-card">
+        <div class="component-label">Callout / "Learn more" Box</div>
+        <div class="demo-callout">This is a more thorough account of our position. For the short version, see <a href="#">The Briefing.</a></div>
+        <p style="font-size:12px; color:rgba(255,255,255,0.3); margin-top:16px; line-height:1.6;">Used to surface related content within article pages. Left border in #CC3366, subtle background, body-size text, link in accent pink.</p>
+      </div>
+      <div class="component-card">
+        <div class="component-label">Pull Quote / Block Quote</div>
+        <div class="demo-pull-quote">"Mitigating the risk of extinction from AI should be a global priority alongside other societal-scale risks such as pandemics and nuclear war."<br><br><strong>— CAIS Statement</strong></div>
+        <p style="font-size:12px; color:rgba(255,255,255,0.3); margin-top:16px; line-height:1.6;">Used for external citations and expert quotes. Italicised body text, subtle border, attribution in Inter Tight bold.</p>
+      </div>
+      <div class="component-card" style="grid-column:1/-1;">
+        <div class="component-label">Table of Contents (Article Pages)</div>
+        <!-- Simulated page layout: #dbe2e9 bg, sidebar left + content right -->
+        <div style="background:#dbe2e9; border-radius:10px; padding:24px; display:grid; grid-template-columns:220px 1fr; gap:24px; align-items:start;">
+          <!-- Sidebar ToC card -->
+          <div style="background:#ffffff; border:1px solid #d4e1ed; border-radius:8px; padding:20px; position:sticky; top:0;">
+            <div style="font-family:'Inter Tight',sans-serif; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:#7a90a5; margin-bottom:14px; font-weight:600;">Table of Contents</div>
+            <div style="font-family:'Inter Tight',sans-serif; font-size:13px; color:#CC3366; padding:8px 0; border-bottom:1px solid #d4e1ed;">1. There isn't a ceiling at human-level capabilities.</div>
+            <div style="font-family:'Inter Tight',sans-serif; font-size:13px; color:#CC3366; padding:8px 0; border-bottom:1px solid #d4e1ed;">2. ASI is very likely to exhibit goal-oriented behavior.</div>
+            <div style="font-family:'Inter Tight',sans-serif; font-size:13px; color:#CC3366; padding:8px 0; border-bottom:1px solid #d4e1ed;">3. ASI is very likely to pursue the wrong goals.</div>
+            <div style="font-family:'Inter Tight',sans-serif; font-size:13px; color:#CC3366; padding:8px 0; border-bottom:1px solid #d4e1ed;">4. It would be lethally dangerous to build ASIs with wrong goals.</div>
+            <div style="font-family:'Inter Tight',sans-serif; font-size:13px; color:#CC3366; padding:8px 0;">5. Catastrophe can be averted via a policy response.</div>
+          </div>
+          <!-- Article content area -->
+          <div>
+            <div style="font-family:'IvyJournal','Palatino Linotype',Georgia,serif; font-size:22px; font-weight:400; color:#0C1F33; margin-bottom:12px; line-height:1.35;">There isn't a ceiling at human-level capabilities.</div>
+            <div style="font-family:'Inter Tight',sans-serif; font-size:14px; color:#0D2136; line-height:1.75; opacity:0.75;">The first thing to understand about smarter-than-human AI is that there is no reason to expect it to stop at human level. Once an AI system can improve its own reasoning, the ceiling on its capabilities is set by physics, not by biology...</div>
+            <div style="margin-top:16px; font-family:'Inter Tight',sans-serif; font-size:14px; color:#0D2136; line-height:1.75; opacity:0.55;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...</div>
+          </div>
+        </div>
+        <p style="font-size:12px; color:rgba(255,255,255,0.3); margin-top:16px; line-height:1.6;">Sits in the left sidebar on article pages. Page background is #dbe2e9. The ToC card is white with a 1px #d4e1ed border. Items are Inter Tight links in #CC3366, separated by 1px #d4e1ed rules. The heading is uppercase Inter Tight 600 in a muted steel tone.</p>
+      </div>
+      <div class="component-card" style="grid-column:1/-1;">
+        <div class="component-label">Content Cards</div>
+        <!-- Simulated section: #dbe2e9 bg, 3-up card grid -->
+        <div style="background:#dbe2e9; border-radius:10px; padding:28px 24px;">
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+            <!-- Card 1 -->
+            <div style="background:#ffffff; border:1px solid #d4e1ed; border-radius:12px; padding:28px 24px 20px; display:flex; flex-direction:column;">
+              <!-- Icon + Title row -->
+              <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px;">
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><polygon points="22,4 40,38 4,38" stroke="#0C1F33" stroke-width="1.5" fill="none" stroke-linejoin="round"/><line x1="22" y1="18" x2="22" y2="28" stroke="#0C1F33" stroke-width="1.5" stroke-linecap="round"/><circle cx="22" cy="33" r="1" fill="#0C1F33"/></svg>
+                <div style="font-family:'IvyJournal','Palatino Linotype',Georgia,serif; font-size:20px; font-weight:400; color:#0C1F33; line-height:1.2;">The Problem</div>
+              </div>
+              <div style="font-family:'Inter Tight',sans-serif; font-size:13px; color:#0D2136; line-height:1.7; opacity:0.7; flex:1; margin-bottom:20px;">Why do we think smarter-than-human AI poses such an enormous risk? What is the shape of the problem?</div>
+              <div style="border-top:1px solid #d4e1ed; padding-top:16px; display:flex; justify-content:center; align-items:center; gap:10px; font-family:'IvyJournal','Palatino Linotype',Georgia,serif; font-size:14px; color:#0C1F33;">Read more <span style="font-size:16px;">→</span></div>
+            </div>
+            <!-- Card 2 -->
+            <div style="background:#ffffff; border:1px solid #d4e1ed; border-radius:12px; padding:28px 24px 20px; display:flex; flex-direction:column;">
+              <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px;">
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><polygon points="22,10 28,18 22,26 16,18" stroke="#0C1F33" stroke-width="1.5" fill="none" stroke-linejoin="round"/><polygon points="22,18 28,26 22,34 16,26" stroke="#0C1F33" stroke-width="1.5" fill="none" stroke-linejoin="round"/></svg>
+                <div style="font-family:'IvyJournal','Palatino Linotype',Georgia,serif; font-size:20px; font-weight:400; color:#0C1F33; line-height:1.2;">The Briefing</div>
+              </div>
+              <div style="font-family:'Inter Tight',sans-serif; font-size:13px; color:#0D2136; line-height:1.7; opacity:0.7; flex:1; margin-bottom:20px;">A shorter introduction to AI catastrophe. For those who want the concise version of MIRI's position.</div>
+              <div style="border-top:1px solid #d4e1ed; padding-top:16px; display:flex; justify-content:center; align-items:center; gap:10px; font-family:'IvyJournal','Palatino Linotype',Georgia,serif; font-size:14px; color:#0C1F33;">Read more <span style="font-size:16px;">→</span></div>
+            </div>
+            <!-- Card 3 -->
+            <div style="background:#ffffff; border:1px solid #d4e1ed; border-radius:12px; padding:28px 24px 20px; display:flex; flex-direction:column;">
+              <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px;">
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><circle cx="20" cy="20" r="10" stroke="#0C1F33" stroke-width="1.5" fill="none"/><line x1="27" y1="27" x2="36" y2="36" stroke="#0C1F33" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="20" r="5" stroke="#0C1F33" stroke-width="1" fill="none"/></svg>
+                <div style="font-family:'IvyJournal','Palatino Linotype',Georgia,serif; font-size:20px; font-weight:400; color:#0C1F33; line-height:1.2;">Research</div>
+              </div>
+              <div style="font-family:'Inter Tight',sans-serif; font-size:13px; color:#0D2136; line-height:1.7; opacity:0.7; flex:1; margin-bottom:20px;">How should the state of the science inform next steps for policymakers and the technical community?</div>
+              <div style="border-top:1px solid #d4e1ed; padding-top:16px; display:flex; justify-content:center; align-items:center; gap:10px; font-family:'IvyJournal','Palatino Linotype',Georgia,serif; font-size:14px; color:#0C1F33;">Read more <span style="font-size:16px;">→</span></div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:12px; color:rgba(255,255,255,0.3); margin-top:16px; line-height:1.6;">3-up card grid on #dbe2e9. Cards: white, 1px #d4e1ed border, 12px radius. Structure: line-art SVG icon + Ivy Journal title side-by-side → Inter Tight body text → 1px #d4e1ed rule → centred "Read more →" in Ivy Journal navy. No gold eyebrow — the category name is the title.</p>
+      </div>
+    </div>
+
+    <div class="component-card" style="margin-top:8px; margin-bottom:24px;">
+      <div class="component-label">Footer Layout</div>
+      <div style="background:#0C1F33; border-radius:10px; padding:40px; border:1px solid rgba(255,255,255,0.06);">
+        <div style="display:grid; grid-template-columns:200px 1fr auto; gap:48px; align-items:start; padding-bottom:32px; border-bottom:1px solid rgba(255,255,255,0.1);">
+          <!-- Logo -->
+          <div>
+            <img src="images/logos/logo-bottom-text.png" alt="MIRI" style="height:80px; width:auto;" />
+          </div>
+          <!-- Link columns -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px 48px;">
+            <div style="font-family:'Inter Tight',sans-serif; font-size:13px; color:rgba(255,255,255,0.6); padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.06);">Contact</div>
+            <div style="font-family:'Inter Tight',sans-serif; font-size:13px; color:rgba(255,255,255,0.6); padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.06);">Team</div>
+            <div style="font-family:'Inter Tight',sans-serif; font-size:13px; color:rgba(255,255,255,0.6); padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.06);">Donate</div>
+            <div style="font-family:'Inter Tight',sans-serif; font-size:13px; color:rgba(255,255,255,0.6); padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.06);">Transparency</div>
+            <div style="font-family:'Inter Tight',sans-serif; font-size:13px; color:rgba(255,255,255,0.6); padding:6px 0;">Careers</div>
+            <div style="font-family:'Inter Tight',sans-serif; font-size:13px; color:rgba(255,255,255,0.6); padding:6px 0;">Privacy</div>
+          </div>
+          <!-- Newsletter -->
+          <div style="min-width:220px;">
+            <div style="font-family:'Inter Tight',sans-serif; font-size:13px; color:rgba(255,255,255,0.7); margin-bottom:12px;">Subscribe to our Newsletter</div>
+            <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:10px 14px; font-size:12px; color:rgba(255,255,255,0.35); margin-bottom:8px; font-family:'Inter Tight',sans-serif;">Email Address</div>
+            <div style="background:#1a3e64; border-radius:6px; padding:10px 14px; font-size:12px; color:white; text-align:center; font-family:'Inter Tight',sans-serif; font-weight:500;">Subscribe</div>
+          </div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:24px;">
+          <div>
+            <div style="font-family:'Inter Tight',sans-serif; font-size:13px; font-weight:600; color:rgba(255,255,255,0.7);">Machine Intelligence Research Institute</div>
+            <div style="font-family:'Inter Tight',sans-serif; font-size:12px; color:rgba(255,255,255,0.4); margin-top:2px;">Berkeley, California</div>
+          </div>
+          <div style="display:flex; gap:16px; font-size:18px; color:rgba(255,255,255,0.5);">
+            <span>f</span><span>𝕏</span>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:12px; color:rgba(255,255,255,0.3); margin-top:16px; line-height:1.6;">Footer: dark navy (#0C1F33). Three columns — MIRI bottom-text logo lockup (bird + "MIRI" wordmark), 2×3 link grid, newsletter subscribe form. Subscribe button in #1a3e64. Bottom bar: full org name + location left, Facebook + X icons right. Thin white/08 rule between.</p>
+    </div>
+
+    <div class="component-card" style="margin-top:8px;">
+      <div class="component-label">Site Navigation Structure</div>
+      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:16px;">
+        <div style="background:var(--accent-pink); border-radius:8px; padding:12px; text-align:center; font-size:12px; font-weight:500;">The Problem</div>
+        <div style="background:rgba(255,255,255,0.08); border-radius:8px; padding:12px; text-align:center; font-size:12px; color:rgba(255,255,255,0.6);">Research</div>
+        <div style="background:rgba(255,255,255,0.08); border-radius:8px; padding:12px; text-align:center; font-size:12px; color:rgba(255,255,255,0.6);">About Us</div>
+        <div style="background:rgba(255,255,255,0.08); border-radius:8px; padding:12px; text-align:center; font-size:12px; color:rgba(255,255,255,0.6);">Updates</div>
+        <div style="background:#1a3e64; border-radius:8px; padding:12px; text-align:center; font-size:12px; font-weight:500; border:1px solid rgba(255,255,255,0.15);">Donate</div>
+      </div>
+      <p style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.6;">
+        Primary: <strong style="color:rgba(255,255,255,0.65);">The Problem · Research · About Us · Updates · Donate</strong> (pink CTA).
+        Footer: Contact · Donate · Careers · Team · Transparency · Privacy.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── SHAPES ────────────────────────────────────────────────────────── -->
+<section id="shapes">
+  <div class="container">
+    <div class="section-label">05 — Visual Motifs</div>
+    <h2 class="section-title">Shapes &amp; Symbols</h2>
+    <p class="section-description">
+      MIRI's visual identity is anchored by The Singularity — a geometric motif representing
+      a critical point in the trajectory of intelligence. Decorative curves extend this language into layout and composition.
+    </p>
+
+    <div class="singularity-full" style="margin-bottom:32px;">
+      <img src="images/motifs/singularity-website.png" alt="The Singularity — MIRI's primary geometric design motif" />
